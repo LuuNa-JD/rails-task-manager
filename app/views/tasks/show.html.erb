@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tache</title>
+</head>
+<body>
+    <div class="container-show">
+      <h1 class="task-title-show"><%= @task.title %></h1>
+      <p class="task-details"><%= @task.details %></p>
+      <p class="%= @task.completed ? 'task-completed' : 'task-incomplete'"><%= @task.completed ? 'Completed' : 'Incomplete' %></p>
+      <a class="button" href="<%= edit_task_path(@task) %>">Edit</a>
+      <%=link_to "Delete",
+      task_path(@task), class: "button",
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+      <a class="button" href="<%= tasks_path %>">Back</a>
+    </div>
+</body>
+</html>

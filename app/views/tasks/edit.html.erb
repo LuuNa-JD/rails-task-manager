@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nouvelle Tâche</title>
+  <link rel="stylesheet" href="your-styles.css"> <!-- Link to your custom CSS file -->
+</head>
+<body>
+  <div class="container">
+    <h1>Tâche</h1>
+    <%= form_with model: @task do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :details %>
+        <%= f.text_field :details, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :completed %>
+        <%= f.check_box :completed, class: 'form-check-input' %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit 'Sauvegarder', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    <a class="button" href="<%= tasks_path %>">Retour à la liste</a>
+  </div>
+</body>
+</html>

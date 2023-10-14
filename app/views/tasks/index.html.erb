@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste de Tâches</title>
+</head>
+<body>
+    <div class="container">
+        <h1>My Tasks</h1>
+        <ul class="task-list">
+          <% @tasks.each do |task| %>
+            <li class="task-item">
+                <div class="task-status">
+                  <%= form_with(model: task, local: true) do |f| %>
+                    <label class="custom-checkbox">
+                      <%= f.check_box :completed, id: "task_#{task.id}_completed", class: "task-completed-checkbox" %>
+                      <span class="checkbox-icon"></span>
+                    </label>
+                  <% end %>
+                </div>
+                <div class="task-title"><%= link_to task.title, task_path(task) %></div>
+            </li>
+          <% end %>
+        </ul>
+        <%= link_to "New Task", tasks_new_path, class: "button"%>
+    </div>
+</body>
+</html>
